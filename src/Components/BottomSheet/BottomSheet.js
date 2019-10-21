@@ -13,6 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './BottomSheet.css';
 
+import { ChatBox } from './../ChatBox/ChatBox';
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -35,10 +37,11 @@ export default function TemporaryDrawer(props) {
 
   const fullList = side => (
     <div className={classes.root} style={{height: '400px'}}>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} style={{height: 'inherit'}}>
             <Grid item md={8}>
             </Grid>
             <Grid item md={4}>
+                <ChatBox />
             </Grid>
         </Grid>
     </div>
