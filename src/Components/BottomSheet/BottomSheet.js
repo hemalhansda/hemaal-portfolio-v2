@@ -31,7 +31,6 @@ export default function TemporaryDrawer(props) {
 
   const sideList = side => (
     <div>
-        <h1>Hello World</h1>
     </div>
   );
 
@@ -59,7 +58,7 @@ export default function TemporaryDrawer(props) {
       <Drawer anchor="top" open={props.controller.top} onClose={props.toggleDrawer('top', false)}>
         {fullList('top')}
       </Drawer>
-      <Drawer anchor="bottom" open={props.controller.bottom} onClose={props.toggleDrawer('bottom', false)} style={{opacity: '0.8'}}>
+      <Drawer anchor="bottom" open={props.controller.bottom} onClose={props.toggleDrawer('bottom', false)} style={{opacity: '0.9'}}>
         {fullList('bottom')}
       </Drawer>
       <Drawer anchor="right" open={props.controller.right} onClose={props.toggleDrawer('right', false)}>
