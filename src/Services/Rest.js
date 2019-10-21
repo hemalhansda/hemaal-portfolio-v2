@@ -74,17 +74,6 @@ const Rest = {
         return Axios.post(this.url, query, { headers: this.header });
     },
 
-    getSearchSuggestions(query) {
-        if (!this.headerData) {
-            this.headerCheck();
-        }
-        query.user_id = this.user_id;
-        let sugg_url = `${domain}/v1/searchSuggestions`;
-        return Axios.get(sugg_url + '?user_id=' + query.user_id + '&text=' + encodeURIComponent(query.text) + '&call_from=pm', {
-            headers: this.header
-        });
-    },
-
     getFormData: (data) => {
         let form_data = new FormData();
         for ( let key in data ) {
