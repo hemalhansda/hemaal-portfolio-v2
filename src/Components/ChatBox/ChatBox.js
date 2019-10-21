@@ -5,10 +5,31 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 
+import Rest from '../../Services/Rest';
+
 export class ChatBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            text: '',
+            chatUser: [],
+            chatDofy: []
+        };
+    }
+
+    askAi = (msg) => {
+        Rest.askAi({askai: msg}).then(res => {
+            console.log('res: ', res);
+            this.setState((state, props) => {
+                state.chatDofy.push(res);
+            });
+        });
+    }
+
+    sendText = () => {
+        this.setState((state, props) => {
+            state.chatUser.push(state.text);
+        });
     }
 
     render() {
@@ -30,8 +51,10 @@ export class ChatBox extends React.Component {
                                 </div>
                             </div>
                             <div className="chat-textbox">
-                                <input className="textbox" />
-                                <button className="chat-send">Send</button>
+                                <input className="textbox" placeholder="Write something..." onChange={(event) => this.setState({
+                                    text: event.value
+                                })} />
+                                <button className="chat-send" onClick={this.sendText}>Send</button>
                             </div>
                         </div>
                     </CardContent>
