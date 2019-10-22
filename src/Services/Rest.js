@@ -23,7 +23,7 @@ const Rest = {
     header: null,
 
     askAi(query) {
-        query = this.getFormData(query);
+        // query = this.getFormData(query);
         return Axios.post(this.url + '/askai', query);
     },
 

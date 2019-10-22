@@ -7,6 +7,26 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Rest from '../../Services/Rest';
 
+const ChatUser = (props) => {
+    return (
+        <div style={{width: 'inherit'}}>
+            <div className="chat-user">
+                {props.text}
+            </div>
+        </div>
+    );
+};
+
+const ChatDofy = (props) => {
+    return (
+        <div style={{width: 'inherit'}}>
+            <div className="chat-dofy">
+                {props.text}
+            </div>
+        </div>
+    );
+};
+
 export class ChatBox extends React.Component {
     constructor(props) {
         super(props);
@@ -15,13 +35,19 @@ export class ChatBox extends React.Component {
             chatUser: [],
             chatDofy: []
         };
+        this.dofyKey = 0;
+        this.userKey = 0;
     }
 
     askAi = (msg) => {
         Rest.askAi({askai: msg}).then(res => {
             console.log('res: ', res);
             this.setState((state, props) => {
-                state.chatDofy.push(res);
+                if (res.data.dofy) {
+                    state.chatDofy.push(res.data.dofy);
+                }
+                console.log('state: ', this.state);
+                return state;
             });
         });
     }
@@ -29,8 +55,21 @@ export class ChatBox extends React.Component {
     sendText = () => {
         this.setState((state, props) => {
             state.chatUser.push(state.text);
+            this.askAi(state.text);
+            state.text = '';
+            return state;
         });
     }
+
+    inputChanging = (event) => {
+        if (event.key === 'Enter') {
+            this.setState((state, props) => {
+                state.chatUser.push(state.text);
+                this.askAi(state.text);
+                return state;
+            });
+        }
+    };
 
     render() {
         return (
@@ -38,22 +77,30 @@ export class ChatBox extends React.Component {
                 <Card style={{height: 'inherit'}}>
                     <CardHeader 
                         title="Wanna talk to DOFY?"
-                        subheader="Dofy is an AI made by me. You can ask anything about me to Dofy."
+                        subheader="Dofy is an AI made by Hemaal. You can ask anything about me to Dofy."
                     />
                     <CardContent>
                         <div className="chat-box">
                             <div className="chat-texting">
-                                <div className="chat-dofy">
-                                    hey
-                                </div>
-                                <div className="chat-user">
-                                    hi, how are you?
-                                </div>
+                                {
+                                    this.state.chatUser.length
+                                    ? this.state.chatUser.map(text => <ChatUser key={this.userKey++} text={text} />)
+                                    : ''
+                                }
+                                {
+                                    this.state.chatDofy.length
+                                    ? this.state.chatDofy.map(text => <ChatDofy key={this.dofyKey++} text={text} />)
+                                    : ''
+                                }
                             </div>
                             <div className="chat-textbox">
-                                <input className="textbox" placeholder="Write something..." onChange={(event) => this.setState({
-                                    text: event.value
-                                })} />
+                                <input
+                                    className="textbox"
+                                    placeholder="Ask me something..."
+                                    onChange={(event) => this.setState({
+                                        text: event.target.value
+                                    })}
+                                    onKeyUp={this.inputChanging} />
                                 <button className="chat-send" onClick={this.sendText}>Send</button>
                             </div>
                         </div>
