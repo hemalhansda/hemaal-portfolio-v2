@@ -4,6 +4,9 @@ import './ChatBox.css';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import TextField from '@material-ui/core/TextField';
+
+import startUp from '../../Assets/svgs/start-up.svg';
 
 import Rest from '../../Services/Rest';
 
@@ -34,7 +37,9 @@ export class ChatBox extends React.Component {
             text: '',
             chatUser: [],
             chatDofy: [],
-            convos: []
+            convos: [],
+            username: '',
+            startUpPage: true
         };
         this.dofyKey = 0;
         this.userKey = 0;
@@ -86,6 +91,18 @@ export class ChatBox extends React.Component {
         }
     };
 
+    handleChange = (event) => {
+        this.setState({
+            username: event.target.value
+        });
+    };
+
+    hideStartupPage = () => {
+        if (this.state.username.length) {
+            this.setState({startUpPage: false});
+        }
+    }
+
     render() {
         return (
             <div style={{height: '400px', padding: '10px'}}>
@@ -95,6 +112,27 @@ export class ChatBox extends React.Component {
                         subheader="Dofy is an AI made by Hemaal. You can ask anything about me to Dofy."
                     />
                     <CardContent>
+                        <div className="chat-box-overlay" style={{display: this.state.startUpPage ? '' : 'none'}}>
+                        </div>
+                        <div className="dofy-intro" style={{display: this.state.startUpPage ? 'flex' : 'none'}}>
+                            <div className="dofy-start-wrapper">
+                                <form className="" noValidate autoComplete="off">
+                                    <TextField
+                                        id="standard-name"
+                                        label="Enter your Name"
+                                        className=""
+                                        value={this.state.username}
+                                        onChange={this.handleChange}
+                                        margin="normal"
+                                    />
+                                </form>
+                                <div style={{width: 'inherit', display: 'flex', justifyContent: 'center'}}>
+                                    <button className="start-dofy" onClick={this.hideStartupPage}>
+                                        <img src={startUp} alt="Start" className="start-up-icon" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div className="chat-box">
                             <div id="chatList" className="chat-texting">
                                 {/* {
