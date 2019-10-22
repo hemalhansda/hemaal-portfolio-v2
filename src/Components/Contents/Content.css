@@ -1,0 +1,18 @@
+.main-intro {
+    height: 290px;
+}
+
+.heading-one {
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+
+.subtitles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}

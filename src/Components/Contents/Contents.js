@@ -22,9 +22,7 @@ import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 
-console.log('post_1: ', post1);
-console.log('post_2: ', post2);
-console.log('post_3: ', post3);
+import './Content.css';
 
 function Copyright() {
   return (
@@ -213,14 +211,11 @@ export default function Contents() {
           >
             Hemaal Taras Hansda
           </Typography>
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
           <Button variant="outlined" size="small">
-            Sign up
+            DOWNLOAD RESUME
           </Button>
         </Toolbar>
-        <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+        {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
           {sections.map(section => (
             <Link
               color="inherit"
@@ -233,7 +228,7 @@ export default function Contents() {
               {section}
             </Link>
           ))}
-        </Toolbar>
+        </Toolbar> */}
         <main>
           {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
@@ -247,18 +242,15 @@ export default function Contents() {
             }
             <div className={classes.overlay} />
             <Grid container>
-              <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
+              <Grid item md={12}>
+                <div className={classes.mainFeaturedPostContent + ' main-intro'}>
+                  <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
+                    Full Stack Developer
                   </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
+                  <Typography className="subtitles" variant="h5" color="inherit" paragraph>
                     Multiple lines of text that form the lede, informing new readers quickly and
                     efficiently about what&apos;s most interesting in this post&apos;s contents.
                   </Typography>
-                  <Link variant="subtitle1" href="#">
-                    Continue reading…
-                  </Link>
                 </div>
               </Grid>
             </Grid>

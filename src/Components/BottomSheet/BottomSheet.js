@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import './BottomSheet.css';
 
 import { ChatBox } from './../ChatBox/ChatBox';
+import GoogleMapsContainer from '../GoogleMapsContainer/GoogleMapsContainer';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,7 +38,38 @@ export default function TemporaryDrawer(props) {
   const fullList = side => (
     <div className={classes.root} style={{height: '420px', overflow: 'none'}}>
         <Grid container spacing={3} style={{height: 'inherit', overflow: 'none'}}>
-            <Grid item md={8}>
+            <Grid item md={4}>
+              <div className="google-map">
+                <GoogleMapsContainer />
+              </div>
+            </Grid>
+            <Grid item md={4}>
+              <div className="contact-details">
+                <div className="contact-row">
+                  <div className="label">
+                    Address:&nbsp;
+                  </div>
+                  <div>
+                    1402, M-88, Sukhobrishti Housing Complex Shapoorji, Newtown Action Area 3, Kolkata - 700135
+                  </div>
+                </div>
+                <div className="contact-row">
+                  <div className="label">
+                    E-Mail:&nbsp;
+                  </div>
+                  <div>
+                    hemal.hansda25@gmail.com
+                  </div>
+                </div>
+                <div className="contact-row">
+                  <div className="label">
+                    Phone Number:&nbsp;
+                  </div>
+                  <div>
+                    7699220682
+                  </div>
+                </div>
+              </div>
             </Grid>
             <Grid item md={4}>
                 <ChatBox />

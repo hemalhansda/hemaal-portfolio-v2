@@ -68,7 +68,7 @@
 .chat-box-overlay {
     height: 255px;
     position: absolute;
-    width: 26.6%;
+    width: 28.6%;
     border-radius: 10px;
     background: black;
     background: rgba(143, 143, 143, 0.8);
@@ -84,7 +84,7 @@
     z-index: 200;
     height: 255px;
     position: absolute;
-    width: 26.6%;
+    width: 28.6%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
