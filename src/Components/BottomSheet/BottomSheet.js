@@ -35,8 +35,8 @@ export default function TemporaryDrawer(props) {
   );
 
   const fullList = side => (
-    <div className={classes.root} style={{height: '420px'}}>
-        <Grid container spacing={3} style={{height: 'inherit'}}>
+    <div className={classes.root} style={{height: '420px', overflow: 'none'}}>
+        <Grid container spacing={3} style={{height: 'inherit', overflow: 'none'}}>
             <Grid item md={8}>
             </Grid>
             <Grid item md={4}>

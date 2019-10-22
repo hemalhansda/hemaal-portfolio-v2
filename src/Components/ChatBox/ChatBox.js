@@ -9,7 +9,7 @@ import Rest from '../../Services/Rest';
 
 const ChatUser = (props) => {
     return (
-        <div style={{width: 'inherit'}}>
+        <div className="msg-dis">
             <div className="chat-user">
                 {props.text}
             </div>
@@ -19,7 +19,7 @@ const ChatUser = (props) => {
 
 const ChatDofy = (props) => {
     return (
-        <div style={{width: 'inherit'}}>
+        <div className="msg-dis">
             <div className="chat-dofy">
                 {props.text}
             </div>
@@ -33,7 +33,8 @@ export class ChatBox extends React.Component {
         this.state = {
             text: '',
             chatUser: [],
-            chatDofy: []
+            chatDofy: [],
+            convos: []
         };
         this.dofyKey = 0;
         this.userKey = 0;
@@ -45,6 +46,7 @@ export class ChatBox extends React.Component {
             this.setState((state, props) => {
                 if (res.data.dofy) {
                     state.chatDofy.push(res.data.dofy);
+                    state.convos.push({by: 'dofy', msg: res.data.dofy});
                 }
                 console.log('state: ', this.state);
                 return state;
@@ -55,9 +57,15 @@ export class ChatBox extends React.Component {
     sendText = () => {
         this.setState((state, props) => {
             state.chatUser.push(state.text);
+            state.convos.push({by: 'user', msg: state.text});
             this.askAi(state.text);
             state.text = '';
             return state;
+        }, () => {
+            setTimeout(() => {
+                let objDiv = document.getElementById("chatList");
+                objDiv.scroll(0, 99999999999999);
+            }, 200);
         });
     }
 
@@ -65,8 +73,15 @@ export class ChatBox extends React.Component {
         if (event.key === 'Enter') {
             this.setState((state, props) => {
                 state.chatUser.push(state.text);
+                state.convos.push({by: 'user', msg: state.text});
                 this.askAi(state.text);
+                state.text = '';
                 return state;
+            }, () => {
+                setTimeout(() => {
+                    let objDiv = document.getElementById("chatList");
+                    objDiv.scroll(0, 99999999999999);
+                }, 200);
             });
         }
     };
@@ -81,8 +96,8 @@ export class ChatBox extends React.Component {
                     />
                     <CardContent>
                         <div className="chat-box">
-                            <div className="chat-texting">
-                                {
+                            <div id="chatList" className="chat-texting">
+                                {/* {
                                     this.state.chatUser.length
                                     ? this.state.chatUser.map(text => <ChatUser key={this.userKey++} text={text} />)
                                     : ''
@@ -91,12 +106,24 @@ export class ChatBox extends React.Component {
                                     this.state.chatDofy.length
                                     ? this.state.chatDofy.map(text => <ChatDofy key={this.dofyKey++} text={text} />)
                                     : ''
+                                } */}
+                                {
+                                    this.state.convos.length
+                                    ? this.state.convos.map(convo => {
+                                       if (convo.by === 'dofy') {
+                                           return (<ChatDofy key={this.dofyKey++} text={convo.msg} />);
+                                       } else {
+                                           return (<ChatUser key={this.userKey++} text={convo.msg} />);
+                                       }
+                                    })
+                                    : ''
                                 }
                             </div>
                             <div className="chat-textbox">
                                 <input
                                     className="textbox"
                                     placeholder="Ask me something..."
+                                    value={this.state.text}
                                     onChange={(event) => this.setState({
                                         text: event.target.value
                                     })}
