@@ -23,6 +23,7 @@ import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 
 import './Content.css';
+import SimpleCollapse from '../SimpleCollapse/SimpleCollapse';
 
 function Copyright() {
   return (
@@ -142,16 +143,18 @@ const sections = [
 
 const featuredPosts = [
   {
-    title: 'Featured post',
-    date: 'Nov 12',
+    title: 'Rover',
+    date: 'Nov 12, 2016',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      `Rover is a bot that is smart and platform-independent, based on IoT. 
+      And the most amazing part is that it can be controlled from anywhere, it 
+      doesn\'t require the user\'s presence near the rover.`,
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: 'DoChat',
+    date: 'August 02, 2017',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
   },
 ];
 
@@ -194,6 +197,14 @@ export default function Contents() {
 
     setState({ ...state, [side]: open });
   };
+
+  const expandDetails = () => {
+    simpleCollapse.handleChange();
+  };
+
+  const ref = React.createRef();
+
+  let simpleCollapse = undefined;
 
   return (
     <ThemeProvider theme={theme}>
@@ -260,7 +271,7 @@ export default function Contents() {
           <Grid container spacing={4}>
             {featuredPosts.map(post => (
               <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
+                <CardActionArea component="a" onClick={expandDetails}>
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
@@ -272,9 +283,6 @@ export default function Contents() {
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
                           {post.description}
-                        </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                          Continue reading...
                         </Typography>
                       </CardContent>
                     </div>
@@ -297,6 +305,7 @@ export default function Contents() {
             {/* Sidebar */}
             {/* End sidebar */}
           </Grid>
+          <SimpleCollapse ref={ref => simpleCollapse = ref} />
         </main>
       </Container>
       {/* Footer */}
