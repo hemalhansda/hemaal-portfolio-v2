@@ -307,6 +307,36 @@ export default function Contents() {
           </Grid>
           <SimpleCollapse ref={ref => simpleCollapse = ref} />
         </main>
+
+        <main>
+          <div id="carousel">
+            <div className="hideLeft">
+              <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg" />
+            </div>
+            <div className="prevLeftSecond">
+              <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg" />
+            </div>
+            <div className="prev">
+              <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg" />
+            </div>
+            <div className="selected">
+              <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg" />
+            </div>
+            <div className="next">
+              <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg" />
+            </div>
+            <div className="nextRightSecond">
+              <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg" />
+            </div>
+            <div className="hideRight">
+              <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg" />
+            </div>
+          </div>
+          <div className="buttons">
+            <button id="prev" className="carosuel-btn"> &lt; </button>
+            <button id="next" className="carosuel-btn"> &gt; </button>
+          </div>
+        </main>
       </Container>
       {/* Footer */}
       <footer className={classes.footer}>
