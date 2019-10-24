@@ -127,3 +127,34 @@ html, body, main {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+
+.buttons-slider {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carosuel-btn-slider {
+    height: 68px;
+    width: 40px;
+    /* border-radius: 22px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #252525;
+    opacity: 0.2;
+    outline: none;
+    box-shadow: 0px 0px 10px 0px white;
+}
+  
+.carosuel-btn-slider:hover {
+    box-shadow: 0px 0px 34px 7px white;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}

@@ -156,6 +156,34 @@ const featuredPosts = [
     description:
       `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
   },
+  {
+    title: 'Rover',
+    date: 'Nov 12, 2016',
+    description:
+      `Rover is a bot that is smart and platform-independent, based on IoT. 
+      And the most amazing part is that it can be controlled from anywhere, it 
+      doesn\'t require the user\'s presence near the rover.`,
+  },
+  {
+    title: 'DoChat',
+    date: 'August 02, 2017',
+    description:
+      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
+  },
+  {
+    title: 'Rover',
+    date: 'Nov 12, 2016',
+    description:
+      `Rover is a bot that is smart and platform-independent, based on IoT. 
+      And the most amazing part is that it can be controlled from anywhere, it 
+      doesn\'t require the user\'s presence near the rover.`,
+  },
+  {
+    title: 'DoChat',
+    date: 'August 02, 2017',
+    description:
+      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
+  },
 ];
 
 const posts = [post1, post2, post3];
@@ -181,7 +209,9 @@ let state = {
   showSheet: false
 };
 
-export default function Contents() {
+let sliderScrollerVal = 0;
+
+export default function Contents(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -205,6 +235,8 @@ export default function Contents() {
   const ref = React.createRef();
 
   let simpleCollapse = undefined;
+
+  let sliderWidth = `${((featuredPosts.length * 100)/2) + 5}%`;
 
   return (
     <ThemeProvider theme={theme}>
@@ -268,36 +300,42 @@ export default function Contents() {
           </Paper>
           {/* End main featured post */}
           {/* Sub featured posts */}
-          <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" onClick={expandDetails}>
-                  <Card className={classes.card}>
-                    <div className={classes.cardDetails}>
-                      <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                      </CardContent>
-                    </div>
-                    <Hidden xsDown>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                    </Hidden>
-                  </Card>
-                </CardActionArea>
-              </Grid>
-            ))}
-          </Grid>
+          <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
+            <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
+              {featuredPosts.map(post => (
+                <div key={post.title} style={{marginRight: '15px'}}>
+                  <CardActionArea component="a" onClick={expandDetails}>
+                    <Card className={classes.card}>
+                      <div className={classes.cardDetails}>
+                        <CardContent>
+                          <Typography component="h2" variant="h5">
+                            {post.title}
+                          </Typography>
+                          <Typography variant="subtitle1" color="textSecondary">
+                            {post.date}
+                          </Typography>
+                          <Typography variant="subtitle1" paragraph>
+                            {post.description}
+                          </Typography>
+                        </CardContent>
+                      </div>
+                      <Hidden xsDown>
+                        <CardMedia
+                          className={classes.cardMedia}
+                          image="https://source.unsplash.com/random"
+                          title="Image title"
+                        />
+                      </Hidden>
+                    </Card>
+                  </CardActionArea>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="buttons-slider">
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}> &lt; </button>
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}> &gt; </button>
+          </div>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
