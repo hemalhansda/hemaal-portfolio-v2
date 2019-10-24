@@ -138,6 +138,7 @@ html, body, main {
 }
 
 .carosuel-btn-slider {
+    border: none;
     height: 68px;
     width: 40px;
     /* border-radius: 22px; */
@@ -157,4 +158,22 @@ html, body, main {
     opacity: 0.5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+}
+
+.arrow {
+    height: 40px;
+}
+
+.project-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-on-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 185px;
 }

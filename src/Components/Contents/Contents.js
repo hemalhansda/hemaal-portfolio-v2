@@ -18,9 +18,25 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import BottomSheet from './../BottomSheet/BottomSheet';
 import Markdown from './Markdown';
+
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import roverImg from './../../Assets/images/Rover.png';
+import dochatImg from './../../Assets/images/dochat.png';
+import handRec from '../../Assets/images/hand-recog.jpeg';
+import mainCover from '../../Assets/images/cover.png';
+import angularImg from '../../Assets/images/angular.png';
+import reactImg from '../../Assets/images/react-sqr.png';
+import ionicImg from '../../Assets/images/ionic.jpg';
+import uxImg from '../../Assets/images/ux.jpg';
+import expressjsImg from '../../Assets/images/expressjs.png';
+import mongoImg from '../../Assets/images/mongo.png';
+import codeigImg from '../../Assets/images/codeig.png';
+import nodejslogoImg from '../../Assets/images/nodejslogo.png';
+
+import leftArrow from '../../Assets/svgs/left-arrow.svg';
+import rightArrow from '../../Assets/svgs/right-arrow.svg';
 
 import './Content.css';
 import SimpleCollapse from '../SimpleCollapse/SimpleCollapse';
@@ -77,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: `url(${mainCover})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -149,12 +165,29 @@ const featuredPosts = [
       `Rover is a bot that is smart and platform-independent, based on IoT. 
       And the most amazing part is that it can be controlled from anywhere, it 
       doesn\'t require the user\'s presence near the rover.`,
+    image: roverImg,
   },
   {
     title: 'DoChat',
     date: 'August 02, 2017',
     description:
       `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
+    image: dochatImg,
+  },
+  {
+    title: 'Hand Sign Recognition',
+    date: 'March 08, 2018',
+    description:
+      `Number of Fingers Detector using OpenCV Python, made for Deaf persons
+      It detects the angle between the fingers and find out how many fingers are there.(OpenCV Python)`,
+    image: handRec,
+  },
+  {
+    title: 'DoChat',
+    date: 'August 02, 2017',
+    description:
+      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
+    image: 'https://source.unsplash.com/user/erondu',
   },
   {
     title: 'Rover',
@@ -163,26 +196,14 @@ const featuredPosts = [
       `Rover is a bot that is smart and platform-independent, based on IoT. 
       And the most amazing part is that it can be controlled from anywhere, it 
       doesn\'t require the user\'s presence near the rover.`,
+    image: 'https://source.unsplash.com/user/erondu',
   },
   {
     title: 'DoChat',
     date: 'August 02, 2017',
     description:
       `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
-  },
-  {
-    title: 'Rover',
-    date: 'Nov 12, 2016',
-    description:
-      `Rover is a bot that is smart and platform-independent, based on IoT. 
-      And the most amazing part is that it can be controlled from anywhere, it 
-      doesn\'t require the user\'s presence near the rover.`,
-  },
-  {
-    title: 'DoChat',
-    date: 'August 02, 2017',
-    description:
-      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
+    image: 'https://source.unsplash.com/user/erondu',
   },
 ];
 
@@ -290,15 +311,19 @@ export default function Contents(props) {
                   <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
                     Full Stack Developer
                   </Typography>
-                  <Typography className="subtitles" variant="h5" color="inherit" paragraph>
-                    Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what&apos;s most interesting in this post&apos;s contents.
+                  <Typography className="subtitles" variant="h7" color="inherit" paragraph style={{fontWeight: 'bolder', textAlign: 'center'}}>
+                  An experienced and trained Programmer and Full Stack Developer pursuing 
+                  Bachelor of Technology in Information Technology from Maulana Abul Kalam Azad 
+                  University of Technology. A growing engineer who has the technical knowledge of 
+                  how things work in the world of zeroes and ones, ready with an edge to dive into the 
+                  design process to discover, ideate and build some cool product. 
                   </Typography>
                 </div>
               </Grid>
             </Grid>
           </Paper>
           {/* End main featured post */}
+          <h3 className="project-text">PROJECTS</h3>
           {/* Sub featured posts */}
           <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
             <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
@@ -322,7 +347,7 @@ export default function Contents(props) {
                       <Hidden xsDown>
                         <CardMedia
                           className={classes.cardMedia}
-                          image="https://source.unsplash.com/random"
+                          image={post.image}
                           title="Image title"
                         />
                       </Hidden>
@@ -333,8 +358,12 @@ export default function Contents(props) {
             </div>
           </div>
           <div className="buttons-slider">
-            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}> &lt; </button>
-            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}> &gt; </button>
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
+              <img className="arrow" src={leftArrow} alt="Slide Left" />
+            </button>
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
+              <img className="arrow" src={rightArrow} alt="Slide Right" />
+            </button>
           </div>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
@@ -345,29 +374,29 @@ export default function Contents(props) {
           </Grid>
           <SimpleCollapse ref={ref => simpleCollapse = ref} />
         </main>
-
+        <h3 className="work-on-text">I WORK ON</h3>
         <main>
           <div id="carousel">
             <div className="hideLeft">
-              <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg" />
+              <img src={nodejslogoImg} />
             </div>
             <div className="prevLeftSecond">
-              <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg" />
+              <img src={codeigImg} />
             </div>
             <div className="prev">
-              <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg" />
+              <img src={angularImg} />
             </div>
             <div className="selected">
-              <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg" />
+              <img src={reactImg} />
             </div>
             <div className="next">
-              <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg" />
+              <img src={uxImg} />
             </div>
             <div className="nextRightSecond">
-              <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg" />
+              <img src={mongoImg} />
             </div>
             <div className="hideRight">
-              <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg" />
+              <img src={ionicImg} />
             </div>
           </div>
           <div className="buttons">
