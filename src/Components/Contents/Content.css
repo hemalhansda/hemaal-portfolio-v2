@@ -30,6 +30,7 @@ html, body, main {
     top: 50%;
     transform: translateY(-50%);
     overflow: hidden;
+    margin-top: 30px;
 }
 #carousel div {
     position: absolute;
