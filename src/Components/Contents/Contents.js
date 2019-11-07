@@ -183,14 +183,14 @@ const featuredPosts = [
     image: handRec,
   },
   {
-    title: 'DoChat',
+    title: 'DoChat2',
     date: 'August 02, 2017',
     description:
       `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
     image: 'https://source.unsplash.com/user/erondu',
   },
   {
-    title: 'Rover',
+    title: 'Rover3',
     date: 'Nov 12, 2016',
     description:
       `Rover is a bot that is smart and platform-independent, based on IoT. 
@@ -199,7 +199,7 @@ const featuredPosts = [
     image: 'https://source.unsplash.com/user/erondu',
   },
   {
-    title: 'DoChat',
+    title: 'DoChat4',
     date: 'August 02, 2017',
     description:
       `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
@@ -262,168 +262,170 @@ export default function Contents(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Toolbar className={classes.toolbar}>
-          <Button size="small">Portfolio</Button>
-          <Typography
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Hemaal Taras Hansda
-          </Typography>
-          <Button variant="outlined" size="small">
-            DOWNLOAD RESUME
-          </Button>
-        </Toolbar>
-        {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-          {sections.map(section => (
-            <Link
-              color="inherit"
-              noWrap
-              key={section}
-              variant="body2"
-              href="#"
-              className={classes.toolbarLink}
-            >
-              {section}
-            </Link>
-          ))}
-        </Toolbar> */}
-        <main>
-          {/* Main featured post */}
-          <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
-            {
-              <img
-                style={{ display: 'none' }}
-                src="https://source.unsplash.com/user/erondu"
-                alt="background"
-              />
-            }
-            <div className={classes.overlay} />
-            <Grid container>
-              <Grid item md={12}>
-                <div className={classes.mainFeaturedPostContent + ' main-intro'}>
-                  <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
-                    Full Stack Developer
-                  </Typography>
-                  <Typography className="subtitles" variant="h7" color="inherit" paragraph style={{fontWeight: 'bolder', textAlign: 'center'}}>
-                  An experienced and trained Programmer and Full Stack Developer pursuing 
-                  Bachelor of Technology in Information Technology from Maulana Abul Kalam Azad 
-                  University of Technology. A growing engineer who has the technical knowledge of 
-                  how things work in the world of zeroes and ones, ready with an edge to dive into the 
-                  design process to discover, ideate and build some cool product. 
-                  </Typography>
-                </div>
-              </Grid>
-            </Grid>
-          </Paper>
-          {/* End main featured post */}
-          <h3 className="project-text">PROJECTS</h3>
-          {/* Sub featured posts */}
-          <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
-            <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
-              {featuredPosts.map(post => (
-                <div key={post.title} style={{marginRight: '15px'}}>
-                  <CardActionArea component="a" onClick={expandDetails}>
-                    <Card className={classes.card}>
-                      <div className={classes.cardDetails}>
-                        <CardContent>
-                          <Typography component="h2" variant="h5">
-                            {post.title}
-                          </Typography>
-                          <Typography variant="subtitle1" color="textSecondary">
-                            {post.date}
-                          </Typography>
-                          <Typography variant="subtitle1" paragraph>
-                            {post.description}
-                          </Typography>
-                        </CardContent>
-                      </div>
-                      <Hidden xsDown>
-                        <CardMedia
-                          className={classes.cardMedia}
-                          image={post.image}
-                          title="Image title"
-                        />
-                      </Hidden>
-                    </Card>
-                  </CardActionArea>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="buttons-slider">
-            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
-              <img className="arrow" src={leftArrow} alt="Slide Left" />
-            </button>
-            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
-              <img className="arrow" src={rightArrow} alt="Slide Right" />
-            </button>
-          </div>
-          {/* End sub featured posts */}
-          <Grid container spacing={5} className={classes.mainGrid}>
-            {/* Main content */}
-            {/* End main content */}
-            {/* Sidebar */}
-            {/* End sidebar */}
-          </Grid>
-          <SimpleCollapse ref={ref => simpleCollapse = ref} />
-        </main>
-        <h3 className="work-on-text">I WORK ON</h3>
-        <main>
-          <div id="carousel">
-            <div className="hideLeft">
-              <img src={nodejslogoImg} />
-            </div>
-            <div className="prevLeftSecond">
-              <img src={codeigImg} />
-            </div>
-            <div className="prev">
-              <img src={angularImg} />
-            </div>
-            <div className="selected">
-              <img src={reactImg} />
-            </div>
-            <div className="next">
-              <img src={uxImg} />
-            </div>
-            <div className="nextRightSecond">
-              <img src={mongoImg} />
-            </div>
-            <div className="hideRight">
-              <img src={ionicImg} />
-            </div>
-          </div>
-          <div className="buttons">
-            <button id="prev" className="carosuel-btn"> &lt; </button>
-            <button id="next" className="carosuel-btn"> &gt; </button>
-          </div>
-        </main>
-      </Container>
-      {/* Footer */}
-      <footer className={classes.footer}>
+      <div style={{position: 'absolute', top: '0', width: '100%', zIndex: '200'}}>
         <Container maxWidth="lg">
-          <Typography variant="h6" align="center" gutterBottom>
-            <Button variant="contained" className={classes.button} onClick={toggleDrawer('bottom', true)}>
-              Contact
+          <Toolbar className={classes.toolbar}>
+            <Button size="small">Portfolio</Button>
+            <Typography
+              component="h2"
+              variant="h5"
+              color="inherit"
+              align="center"
+              noWrap
+              className={classes.toolbarTitle}
+            >
+              Hemaal Taras Hansda
+            </Typography>
+            <Button variant="outlined" size="small">
+              DOWNLOAD RESUME
             </Button>
-          </Typography>
-          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Architectured With Love! Hemaal &hearts;
-          </Typography>
-          <Copyright />
+          </Toolbar>
+          {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+            {sections.map(section => (
+              <Link
+                color="inherit"
+                noWrap
+                key={section}
+                variant="body2"
+                href="#"
+                className={classes.toolbarLink}
+              >
+                {section}
+              </Link>
+            ))}
+          </Toolbar> */}
+          <main>
+            {/* Main featured post */}
+            <Paper className={classes.mainFeaturedPost}>
+              {/* Increase the priority of the hero background image */}
+              {
+                <img
+                  style={{ display: 'none' }}
+                  src="https://source.unsplash.com/user/erondu"
+                  alt="background"
+                />
+              }
+              <div className={classes.overlay} />
+              <Grid container>
+                <Grid item md={12}>
+                  <div className={classes.mainFeaturedPostContent + ' main-intro'}>
+                    <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
+                      Full Stack Developer
+                    </Typography>
+                    <Typography className="subtitles" variant="h7" color="inherit" paragraph style={{fontWeight: 'bolder', textAlign: 'center'}}>
+                    An experienced and trained Programmer and Full Stack Developer pursuing 
+                    Bachelor of Technology in Information Technology from Maulana Abul Kalam Azad 
+                    University of Technology. A growing engineer who has the technical knowledge of 
+                    how things work in the world of zeroes and ones, ready with an edge to dive into the 
+                    design process to discover, ideate and build some cool product. 
+                    </Typography>
+                  </div>
+                </Grid>
+              </Grid>
+            </Paper>
+            {/* End main featured post */}
+            <h3 className="project-text">PROJECTS</h3>
+            {/* Sub featured posts */}
+            <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
+              <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
+                {featuredPosts.map(post => (
+                  <div key={post.title} style={{marginRight: '15px'}}>
+                    <CardActionArea component="a" onClick={expandDetails}>
+                      <Card className={classes.card}>
+                        <div className={classes.cardDetails}>
+                          <CardContent>
+                            <Typography component="h2" variant="h5">
+                              {post.title}
+                            </Typography>
+                            <Typography variant="subtitle1" color="textSecondary">
+                              {post.date}
+                            </Typography>
+                            <Typography variant="subtitle1" paragraph>
+                              {post.description}
+                            </Typography>
+                          </CardContent>
+                        </div>
+                        <Hidden xsDown>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image={post.image}
+                            title="Image title"
+                          />
+                        </Hidden>
+                      </Card>
+                    </CardActionArea>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="buttons-slider">
+              <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
+                <img className="arrow" src={leftArrow} alt="Slide Left" />
+              </button>
+              <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
+                <img className="arrow" src={rightArrow} alt="Slide Right" />
+              </button>
+            </div>
+            {/* End sub featured posts */}
+            <Grid container spacing={5} className={classes.mainGrid}>
+              {/* Main content */}
+              {/* End main content */}
+              {/* Sidebar */}
+              {/* End sidebar */}
+            </Grid>
+            <SimpleCollapse />
+          </main>
+          <h3 className="work-on-text">I WORK ON</h3>
+          <main>
+            <div id="carousel">
+              <div className="hideLeft">
+                <img src={nodejslogoImg} />
+              </div>
+              <div className="prevLeftSecond">
+                <img src={codeigImg} />
+              </div>
+              <div className="prev">
+                <img src={angularImg} />
+              </div>
+              <div className="selected">
+                <img src={reactImg} />
+              </div>
+              <div className="next">
+                <img src={uxImg} />
+              </div>
+              <div className="nextRightSecond">
+                <img src={mongoImg} />
+              </div>
+              <div className="hideRight">
+                <img src={ionicImg} />
+              </div>
+            </div>
+            <div className="buttons">
+              <button id="prev" className="carosuel-btn"> &lt; </button>
+              <button id="next" className="carosuel-btn"> &gt; </button>
+            </div>
+          </main>
         </Container>
-      </footer>
-      <BottomSheet 
-        controller={state}
-        toggleDrawer={toggleDrawer}
-      />
-      {/* End footer */}
+        {/* Footer */}
+        <footer className={classes.footer} style={{opacity: '0.7'}}>
+          <Container maxWidth="lg">
+            <Typography variant="h6" align="center" gutterBottom>
+              <Button variant="contained" className={classes.button} onClick={toggleDrawer('bottom', true)}>
+                Contact
+              </Button>
+            </Typography>
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+              Architectured With Love! Hemaal &hearts;
+            </Typography>
+            <Copyright />
+          </Container>
+        </footer>
+        <BottomSheet 
+          controller={state}
+          toggleDrawer={toggleDrawer}
+        />
+        {/* End footer */}
+      </div>
     </ThemeProvider>
   );
 }
