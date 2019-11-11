@@ -1,7 +1,7 @@
 {
   "name": "hemaal_portfolio",
   "version": "0.1.0",
-  "homepage": "http://hemaalhansda",
+  "homepage": "http://localhost/hemaalhansda",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.1",
