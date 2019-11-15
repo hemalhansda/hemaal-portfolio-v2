@@ -24,14 +24,14 @@ export class Layout extends React.Component {
     }
 
     slideProjects = (direction) => {
-        if (direction === 'right') {
-          this.sliderScrollerVal += 970;
-        } else if (direction === 'left') {
-          this.sliderScrollerVal = this.sliderScrollerVal < 970 ? 0 : this.sliderScrollerVal - 970;
-        }
-        if (document.getElementById('corsoSlider')) {
-          document.getElementById('corsoSlider').scroll(this.sliderScrollerVal, 0);
-        }
+      if (direction === 'right') {
+        this.sliderScrollerVal += 970;
+      } else if (direction === 'left') {
+        this.sliderScrollerVal = this.sliderScrollerVal < 970 ? 0 : this.sliderScrollerVal - 970;
+      }
+      if (document.getElementById('corsoSlider')) {
+        document.getElementById('corsoSlider').scroll(this.sliderScrollerVal, 0);
+      }
     };
 
     handleClose = () => {
@@ -48,35 +48,35 @@ export class Layout extends React.Component {
     }
 
     render() {
-        return (
-            <React.Fragment>
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className="dev-modal"
-                open={this.state.open}
-                onClose={this.handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={this.state.open}>
-                  <div className="dev-sub-modal">
-                    <h2 id="transition-modal-title">Webapp is under maintainence!</h2>
-                    <p id="transition-modal-description">You can still explore this beta version! Thank You :)</p>
-                  </div>
-                </Fade>
-              </Modal>
-              <AssetFlasher
-                ref={ref => this.handleAssetFlasher = ref}
-              />
-              <Contents
-                slideProjects={this.slideProjects}
-                showNotification={this.showNotification}
-              />
-            </React.Fragment>
-        );
+      return (
+        <React.Fragment>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className="dev-modal"
+            open={this.state.open}
+            onClose={this.handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={this.state.open}>
+              <div className="dev-sub-modal">
+                <h2 id="transition-modal-title">Webapp is under maintainence!</h2>
+                <p id="transition-modal-description">You can still explore this beta version! Thank You :)</p>
+              </div>
+            </Fade>
+          </Modal>
+          <AssetFlasher
+            ref={ref => this.handleAssetFlasher = ref}
+          />
+          <Contents
+            slideProjects={this.slideProjects}
+            showNotification={this.showNotification}
+          />
+        </React.Fragment>
+      );
     }
 }
