@@ -11,9 +11,15 @@ export class Layout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          open: true
+          open: false
         };
         this.sliderScrollerVal = 0;
+    }
+
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({open: true});
+      }, 3000);
     }
 
     slideProjects = (direction) => {
