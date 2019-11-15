@@ -422,6 +422,7 @@ export default function Contents(props) {
       <BottomSheet 
         controller={state}
         toggleDrawer={toggleDrawer}
+        showNotification={props.showNotification}
       />
       {/* End footer */}
     </ThemeProvider>

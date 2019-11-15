@@ -10,7 +10,8 @@ const options = {
 };
 
 const Rest = {
-    url: `http://localhost:3100`,
+    // url: `http://localhost:3100`,
+    url: `http://dolfox.tk/dofy`,
 
     CancelToken: Axios.CancelToken,
 

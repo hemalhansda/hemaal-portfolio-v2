@@ -6,6 +6,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
 import Contents from '../Contents/Contents';
+import { AssetFlasher } from '../AssetFlasher/AssetFlasher';
 
 export class Layout extends React.Component {
     constructor(props) {
@@ -37,6 +38,15 @@ export class Layout extends React.Component {
       this.setState({open: !this.state.open});
     }
 
+    showNotification = (data) => {
+      this.handleAssetFlasher.setState({
+        title: data.title,
+        asset: data.href
+      }, () => {
+        this.handleAssetFlasher.setState({displayFlash: true});
+      });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -59,7 +69,13 @@ export class Layout extends React.Component {
                   </div>
                 </Fade>
               </Modal>
-              <Contents slideProjects={this.slideProjects}/>
+              <AssetFlasher
+                ref={ref => this.handleAssetFlasher = ref}
+              />
+              <Contents
+                slideProjects={this.slideProjects}
+                showNotification={this.showNotification}
+              />
             </React.Fragment>
         );
     }
