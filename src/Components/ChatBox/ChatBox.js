@@ -61,7 +61,7 @@ export class ChatBox extends React.Component {
                     state.chatDofy.push(res.data.dofy);
                     state.convos.push({by: 'dofy', msg: res.data.dofy});
                 }
-                if (res.data.command) {
+                if (res.data.command && res.data.command.length) {
                     const data = {
                         title: this.commands[res.data.command].title,
                         asset: this.commands[res.data.command].asset

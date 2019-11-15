@@ -44,6 +44,9 @@ export class Layout extends React.Component {
       asset: data.href
     }, () => {
       this.handleAssetFlasher.setState({displayFlash: true});
+      setTimeout(() => {
+        this.handleAssetFlasher.setState({displayFlash: false});
+      }, 10000);
     });
   }
 
