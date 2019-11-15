@@ -118,6 +118,16 @@ export class ChatBox extends React.Component {
         }
     }
 
+    updateUsername = (event) => {
+        event.preventDefault();
+        if (event.key === 'Enter') {
+            Rest.sendUName({username: this.state.username}).then(res => {
+                console.log('res: ', res);
+            });
+            this.hideStartupPage();
+        }
+    }
+
     render() {
         return (
             <div style={{height: '400px', padding: '10px'}}>
@@ -138,6 +148,7 @@ export class ChatBox extends React.Component {
                                         className=""
                                         value={this.state.username}
                                         onChange={this.handleChange}
+                                        onKeyUp={this.updateUsername}
                                         margin="normal"
                                     />
                                 </form>

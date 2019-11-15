@@ -23,6 +23,10 @@ const Rest = {
     user_id: null,
     header: null,
 
+    sendUName(query) {
+        return Axios.post(this.url + '/userAccess', query);
+    },
+
     askAi(query) {
         // query = this.getFormData(query);
         return Axios.post(this.url + '/askai', query);
