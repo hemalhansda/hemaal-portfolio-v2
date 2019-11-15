@@ -10,11 +10,11 @@ import { AssetFlasher } from '../AssetFlasher/AssetFlasher';
 
 export class Layout extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-          open: false
-        };
-        this.sliderScrollerVal = 0;
+      super(props);
+      this.state = {
+        open: false
+      };
+      this.sliderScrollerVal = 0;
     }
 
     componentDidMount() {
