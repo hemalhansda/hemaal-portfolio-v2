@@ -420,11 +420,12 @@ export default function Contents(props) {
             <Copyright />
           </Container>
         </footer>
-        <BottomSheet 
-          controller={state}
-          toggleDrawer={toggleDrawer}
-        />
         {/* End footer */}
+      <BottomSheet 
+        controller={state}
+        toggleDrawer={toggleDrawer}
+        showNotification={props.showNotification}
+      />
       </div>
     </ThemeProvider>
   );

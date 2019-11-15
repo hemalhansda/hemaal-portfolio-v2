@@ -1,0 +1,74 @@
+.flash-container {
+    width: 250px;
+    background-color: white;
+    height: 100px;
+    position: fixed;
+    top: 3vh;
+    left: 71vw;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 0px white;
+    opacity: 0.9;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: notification 1.5s ease-in-out;
+}
+
+.hide-flash {
+    left: 120vw;
+    animation: hide_notification 1s ease-in-out;
+}
+
+@keyframes hide_notification {
+    0% {
+        left: 71vw;
+    } 100% {
+        left: 120vw;
+        display: none;
+    }
+}
+
+@keyframes notification {
+    0% {
+        top: -20vh;
+    } 100% {
+        top: 3vh;
+    }
+}
+
+.flash-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: black;
+    text-transform: uppercase;
+}
+
+.flash-button {
+    width: 180px;
+    height: 50px;
+    font-weight: 900;
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 0px black;
+}
+
+.flash-button:hover {
+    cursor: pointer;
+    background-color: rgb(44, 44, 44);
+    transition: all 0.4s ease-in-out;
+}
+
+.download-icon {
+    height: 14px;
+    width: 15px;
+    margin-left: 5px;
+}

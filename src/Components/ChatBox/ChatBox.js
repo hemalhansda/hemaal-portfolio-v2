@@ -10,6 +10,8 @@ import startUp from '../../Assets/svgs/start-up.svg';
 
 import Rest from '../../Services/Rest';
 
+import myResume from '../../Assets/docs/resume.pdf';
+
 const ChatUser = (props) => {
     return (
         <div className="msg-dis">
@@ -43,6 +45,12 @@ export class ChatBox extends React.Component {
         };
         this.dofyKey = 0;
         this.userKey = 0;
+        this.commands = {
+            'download-resume': {
+                title: 'Resume',
+                asset: myResume,
+            }
+        };
     }
 
     askAi = (msg) => {
@@ -52,6 +60,13 @@ export class ChatBox extends React.Component {
                 if (res.data.dofy) {
                     state.chatDofy.push(res.data.dofy);
                     state.convos.push({by: 'dofy', msg: res.data.dofy});
+                }
+                if (res.data.command && res.data.command.length) {
+                    const data = {
+                        title: this.commands[res.data.command].title,
+                        asset: this.commands[res.data.command].asset
+                    }
+                    this.props.showNotification(data);
                 }
                 console.log('state: ', this.state);
                 return state;

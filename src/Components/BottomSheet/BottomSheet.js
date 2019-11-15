@@ -72,7 +72,9 @@ export default function TemporaryDrawer(props) {
               </div>
             </Grid>
             <Grid item md={4}>
-                <ChatBox />
+                <ChatBox 
+                  showNotification={props.showNotification}
+                />
             </Grid>
         </Grid>
     </div>

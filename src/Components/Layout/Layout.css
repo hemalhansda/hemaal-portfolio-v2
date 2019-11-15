@@ -11,16 +11,12 @@
     border-radius: 10px;
     box-shadow: 0px 1px 3px 1px white;
     outline: none;
-    animation: slideDownModal 0.7s ease-in-out;
+    animation: slideDownModal 1.5s ease-in-out;
 }
 
 @keyframes slideDownModal {
     0% {
-        margin-top: 0%;
-    } 50% {
-        margin-top: 35%;
-    } 75% {
-        margin-top: 10%;
+        margin-top: -10%;
     } 100% {
         margin-top: 20%;
     }
