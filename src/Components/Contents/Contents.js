@@ -29,9 +29,9 @@ import mainCover from '../../Assets/images/cover.png';
 import angularImg from '../../Assets/images/angular.png';
 import reactImg from '../../Assets/images/react-sqr.png';
 import ionicImg from '../../Assets/images/ionic.jpg';
-import uxImg from '../../Assets/images/ux.jpg';
+import uxImg from '../../Assets/images/ux.png';
 import expressjsImg from '../../Assets/images/expressjs.png';
-import mongoImg from '../../Assets/images/mongo.png';
+import mongoImg from '../../Assets/images/mongoleaf.png';
 import codeigImg from '../../Assets/images/codeig.png';
 import nodejslogoImg from '../../Assets/images/nodejslogo.png';
 
@@ -329,7 +329,7 @@ export default function Contents(props) {
             <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
               {featuredPosts.map(post => (
                 <div key={post.title} style={{marginRight: '15px'}}>
-                  <CardActionArea component="a" onClick={expandDetails}>
+                  <CardActionArea component="a" onClick={expandDetails} className="card-hover">
                     <Card className={classes.card}>
                       <div className={classes.cardDetails}>
                         <CardContent>
@@ -346,7 +346,7 @@ export default function Contents(props) {
                       </div>
                       <Hidden xsDown>
                         <CardMedia
-                          className={classes.cardMedia}
+                          className={classes.cardMedia + ' filter-adder'}
                           image={post.image}
                           title="Image title"
                         />
