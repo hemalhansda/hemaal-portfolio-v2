@@ -177,3 +177,23 @@ html, body, main {
     position: relative;
     bottom: 185px;
 }
+
+.filter-adder {
+    filter: grayscale(100%);
+    transition: all 1s ease-in-out;
+    animation: trans_filter 3s ease-in-out;
+}
+
+.filter-adder:hover {
+    cursor: pointer;
+    filter: grayscale(0%);
+    transition: all 1s ease-in-out;
+}
+
+@keyframes trans_filter {
+    0% {
+      filter: grayscale(0%);
+    } 100% {
+      filter: grayscale(100%);
+    }
+}

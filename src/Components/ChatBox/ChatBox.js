@@ -12,6 +12,8 @@ import Rest from '../../Services/Rest';
 
 import myResume from '../../Assets/docs/resume.pdf';
 
+import uniqid from 'uniqid';
+
 const ChatUser = (props) => {
     return (
         <div className="msg-dis">
@@ -53,6 +55,25 @@ export class ChatBox extends React.Component {
         };
     }
 
+    componentDidMount() {
+        // const queries = [
+        //     'If you don\'t mind, can I have your phone number?',
+        //     'Can I have your address?',
+        //     'Where do you live?',
+        //     'You are from which country?'
+        // ];
+        // let iteration = 0;
+        // let inter = setInterval(() => {
+        //     this.setState((props, state) => {
+        //         state.chatDofy.push(queries[iteration]);
+        //     });
+        //     iteration++;
+        //     if (iteration > queries.length) {
+        //         clearInterval(inter);
+        //     }
+        // }, 5000);
+    }
+
     askAi = (msg) => {
         Rest.askAi({askai: msg}).then(res => {
             console.log('res: ', res);
@@ -68,7 +89,6 @@ export class ChatBox extends React.Component {
                     }
                     this.props.showNotification(data);
                 }
-                console.log('state: ', this.state);
                 return state;
             });
         });
@@ -121,7 +141,7 @@ export class ChatBox extends React.Component {
     updateUsername = (event) => {
         event.preventDefault();
         if (event.key === 'Enter') {
-            Rest.sendUName({username: this.state.username}).then(res => {
+            Rest.sendUName({username: this.state.username, convoId: uniqid.time()}).then(res => {
                 console.log('res: ', res);
             });
             this.hideStartupPage();
@@ -141,7 +161,7 @@ export class ChatBox extends React.Component {
                         </div>
                         <div className="dofy-intro" style={{display: this.state.startUpPage ? 'flex' : 'none'}}>
                             <div className="dofy-start-wrapper">
-                                <form className="" noValidate autoComplete="off">
+                                <form className="" onSubmit={this.updateUsername} noValidate autoComplete="off">
                                     <TextField
                                         id="standard-name"
                                         label="Enter your Name"

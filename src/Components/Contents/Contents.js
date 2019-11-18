@@ -29,9 +29,9 @@ import mainCover from '../../Assets/images/cover.png';
 import angularImg from '../../Assets/images/angular.png';
 import reactImg from '../../Assets/images/react-sqr.png';
 import ionicImg from '../../Assets/images/ionic.jpg';
-import uxImg from '../../Assets/images/ux.jpg';
+import uxImg from '../../Assets/images/ux.png';
 import expressjsImg from '../../Assets/images/expressjs.png';
-import mongoImg from '../../Assets/images/mongo.png';
+import mongoImg from '../../Assets/images/mongoleaf.png';
 import codeigImg from '../../Assets/images/codeig.png';
 import nodejslogoImg from '../../Assets/images/nodejslogo.png';
 
@@ -322,59 +322,59 @@ export default function Contents(props) {
                   </div>
                 </Grid>
               </Grid>
-            </Paper>
-            {/* End main featured post */}
-            <h3 className="project-text">PROJECTS</h3>
-            {/* Sub featured posts */}
-            <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
-              <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
-                {featuredPosts.map(post => (
-                  <div key={post.title} style={{marginRight: '15px'}}>
-                    <CardActionArea component="a" onClick={expandDetails}>
-                      <Card className={classes.card}>
-                        <div className={classes.cardDetails}>
-                          <CardContent>
-                            <Typography component="h2" variant="h5">
-                              {post.title}
-                            </Typography>
-                            <Typography variant="subtitle1" color="textSecondary">
-                              {post.date}
-                            </Typography>
-                            <Typography variant="subtitle1" paragraph>
-                              {post.description}
-                            </Typography>
-                          </CardContent>
-                        </div>
-                        <Hidden xsDown>
-                          <CardMedia
-                            className={classes.cardMedia}
-                            image={post.image}
-                            title="Image title"
-                          />
-                        </Hidden>
-                      </Card>
-                    </CardActionArea>
-                  </div>
-                ))}
-              </div>
+          </Paper>
+          {/* End main featured post */}
+          <h3 className="project-text">PROJECTS</h3>
+          {/* Sub featured posts */}
+          <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
+            <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
+              {featuredPosts.map(post => (
+                <div key={post.title} style={{marginRight: '15px'}}>
+                  <CardActionArea component="a" onClick={expandDetails} className="card-hover">
+                    <Card className={classes.card}>
+                      <div className={classes.cardDetails}>
+                        <CardContent>
+                          <Typography component="h2" variant="h5">
+                            {post.title}
+                          </Typography>
+                          <Typography variant="subtitle1" color="textSecondary">
+                            {post.date}
+                          </Typography>
+                          <Typography variant="subtitle1" paragraph>
+                            {post.description}
+                          </Typography>
+                        </CardContent>
+                      </div>
+                      <Hidden xsDown>
+                        <CardMedia
+                          className={classes.cardMedia + ' filter-adder'}
+                          image={post.image}
+                          title="Image title"
+                        />
+                      </Hidden>
+                    </Card>
+                  </CardActionArea>
+                </div>
+              ))}
             </div>
-            <div className="buttons-slider">
-              <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
-                <img className="arrow" src={leftArrow} alt="Slide Left" />
-              </button>
-              <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
-                <img className="arrow" src={rightArrow} alt="Slide Right" />
-              </button>
-            </div>
-            {/* End sub featured posts */}
-            <Grid container spacing={5} className={classes.mainGrid}>
-              {/* Main content */}
-              {/* End main content */}
-              {/* Sidebar */}
-              {/* End sidebar */}
-            </Grid>
-            <SimpleCollapse />
-          </main>
+          </div>
+          <div className="buttons-slider">
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
+              <img className="arrow" src={leftArrow} alt="Slide Left" />
+            </button>
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
+              <img className="arrow" src={rightArrow} alt="Slide Right" />
+            </button>
+          </div>
+          {/* End sub featured posts */}
+          <Grid container spacing={5} className={classes.mainGrid}>
+            {/* Main content */}
+            {/* End main content */}
+            {/* Sidebar */}
+            {/* End sidebar */}
+          </Grid>
+          <SimpleCollapse ref={ref => simpleCollapse = ref} />
+        </main>
           <h3 className="work-on-text">I WORK ON</h3>
           <main>
             <div id="carousel">
