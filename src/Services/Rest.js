@@ -47,36 +47,8 @@ const Rest = {
         }
     },
 
-    getPMSearchResult(query) {
-        if (!this.headerData) {
-            this.headerCheck();
-        }
-        query.user_id = this.user_id;
-        query = this.getFormData(query);
-        return Axios.post(this.url, query, {
-            cancelToken: new this.CancelToken(function executor(c) {
-                cancel = c;
-            }),
-            headers: this.header
-        });
-    },
-
-    getShareUrl(share_url, query) {
-        if (!this.headerData) {
-            this.headerCheck();
-        }
-        query.user_id = this.user_id;
-        query = objectToFormData(query, options);
-        return Axios.post(share_url, query, { headers: this.header });
-    },
-
-    getImportedData(query) {
-        if (!this.headerData) {
-            this.headerCheck();
-        }
-        query.user_id = this.user_id;
-        query = objectToFormData(query, options);
-        return Axios.post(this.url, query, { headers: this.header });
+    getAllProjects() {
+        return Axios.get(this.url + '/getProject');
     },
 
     getFormData: (data) => {
