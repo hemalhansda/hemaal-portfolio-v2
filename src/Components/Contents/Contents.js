@@ -40,6 +40,7 @@ import rightArrow from '../../Assets/svgs/right-arrow.svg';
 
 import './Content.css';
 import SimpleCollapse from '../SimpleCollapse/SimpleCollapse';
+import Rest from '../../Services/Rest';
 
 function Copyright() {
   return (
@@ -157,55 +158,14 @@ const sections = [
   'Travel',
 ];
 
-const featuredPosts = [
-  {
-    title: 'Rover',
-    date: 'Nov 12, 2016',
-    description:
-      `Rover is a bot that is smart and platform-independent, based on IoT. 
-      And the most amazing part is that it can be controlled from anywhere, it 
-      doesn\'t require the user\'s presence near the rover.`,
-    image: roverImg,
-  },
-  {
-    title: 'DoChat',
-    date: 'August 02, 2017',
-    description:
-      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
-    image: dochatImg,
-  },
-  {
-    title: 'Hand Sign Recognition',
-    date: 'March 08, 2018',
-    description:
-      `Number of Fingers Detector using OpenCV Python, made for Deaf persons
-      It detects the angle between the fingers and find out how many fingers are there.(OpenCV Python)`,
-    image: handRec,
-  },
-  {
-    title: 'DoChat',
-    date: 'August 02, 2017',
-    description:
-      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
-    image: 'https://source.unsplash.com/user/erondu',
-  },
-  {
-    title: 'Rover',
-    date: 'Nov 12, 2016',
-    description:
-      `Rover is a bot that is smart and platform-independent, based on IoT. 
-      And the most amazing part is that it can be controlled from anywhere, it 
-      doesn\'t require the user\'s presence near the rover.`,
-    image: 'https://source.unsplash.com/user/erondu',
-  },
-  {
-    title: 'DoChat',
-    date: 'August 02, 2017',
-    description:
-      `DoChat is a Chating Website based on MERN Stack. This project is not an open source project, so I can't provide the project link but anyone can access the website though.`,
-    image: 'https://source.unsplash.com/user/erondu',
-  },
-];
+let featuredPosts = [];
+const getAllProjects = () => {
+  Rest.getAllProjects().then((res) => {
+    featuredPosts = res.data.data;
+  });
+};
+
+getAllProjects();
 
 const posts = [post1, post2, post3];
 
@@ -250,7 +210,7 @@ export default function Contents(props) {
   };
 
   const expandDetails = () => {
-    simpleCollapse.handleChange();
+    console.log('11231232131: ', SimpleCollapse);
   };
 
   const ref = React.createRef();
@@ -337,7 +297,7 @@ export default function Contents(props) {
                             {post.title}
                           </Typography>
                           <Typography variant="subtitle1" color="textSecondary">
-                            {post.date}
+                            {new Date(post.createdAt).toDateString()}
                           </Typography>
                           <Typography variant="subtitle1" paragraph>
                             {post.description}
@@ -347,7 +307,7 @@ export default function Contents(props) {
                       <Hidden xsDown>
                         <CardMedia
                           className={classes.cardMedia + ' filter-adder'}
-                          image={post.image}
+                          image={post.imageUrl}
                           title="Image title"
                         />
                       </Hidden>
@@ -372,7 +332,7 @@ export default function Contents(props) {
             {/* Sidebar */}
             {/* End sidebar */}
           </Grid>
-          <SimpleCollapse ref={ref => simpleCollapse = ref} />
+          <SimpleCollapse />
         </main>
         <h3 className="work-on-text">I WORK ON</h3>
         <main>
