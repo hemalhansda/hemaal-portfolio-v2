@@ -2,8 +2,6 @@ import React from 'react';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -14,10 +12,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import BottomSheet from './../BottomSheet/BottomSheet';
-import Markdown from './Markdown';
 
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
@@ -195,137 +191,138 @@ export default function Contents(props) {
     <ThemeProvider theme={theme}>
       <div style={{position: 'absolute', top: '0', width: '100%', zIndex: '200'}}>
       <CssBaseline />
+      <Container maxWidth="lg" style={{display: loader ? 'none' : ''}}>
+        <Toolbar className={classes.toolbar}>
+          <Button size="small">Portfolio</Button>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            align="center"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            Hemaal Taras Hansda
+          </Typography>
+          <Button variant="outlined" size="small">
+            DOWNLOAD RESUME
+          </Button>
+        </Toolbar>
+        <main>
+          {/* Main featured post */}
+          <Paper className={classes.mainFeaturedPost}>
+            {/* Increase the priority of the hero background image */}
+            {
+              <img
+                style={{ display: 'none' }}
+                src="https://source.unsplash.com/user/erondu"
+                alt="background"
+              />
+            }
+            <div className={classes.overlay} />
+            <Grid container>
+              <Grid item md={12}>
+                <div className={classes.mainFeaturedPostContent + ' main-intro'}>
+                  <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
+                    Full Stack Developer
+                  </Typography>
+                  <Typography className="subtitles" color="inherit" paragraph style={{fontWeight: 'bolder', textAlign: 'center'}}>
+                  An experienced and trained Programmer and Full Stack Developer pursuing 
+                  Bachelor of Technology in Information Technology from Maulana Abul Kalam Azad 
+                  University of Technology. A growing engineer who has the technical knowledge of 
+                  how things work in the world of zeroes and ones, ready with an edge to dive into the 
+                  design process to discover, ideate and build some cool product. 
+                  </Typography>
+                </div>
+              </Grid>
+            </Grid>
+          </Paper>
+          {/* End main featured post */}
+          <h3 className="project-text">PROJECTS</h3>
+          {/* Sub featured posts */}
+          <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
+            <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
+              {featuredPosts.map(post => (
+                <div key={post.title} style={{marginRight: '15px'}}>
+                  <CardActionArea component="a" onClick={expandDetails} className="card-hover">
+                    <Card className={classes.card}>
+                      <div className={classes.cardDetails}>
+                        <CardContent>
+                          <Typography component="h2" variant="h5">
+                            {post.title}
+                          </Typography>
+                          <Typography variant="subtitle1" color="textSecondary">
+                            {new Date(post.createdAt).toDateString()}
+                          </Typography>
+                          <Typography variant="subtitle1" paragraph>
+                            {post.description}
+                          </Typography>
+                        </CardContent>
+                      </div>
+                      <Hidden xsDown>
+                        <CardMedia
+                          className={classes.cardMedia + ' filter-adder'}
+                          image={post.imageUrl}
+                          title="Image title"
+                        />
+                      </Hidden>
+                    </Card>
+                  </CardActionArea>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="buttons-slider">
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
+              <img className="arrow" src={leftArrow} alt="Slide Left" />
+            </button>
+            <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
+              <img className="arrow" src={rightArrow} alt="Slide Right" />
+            </button>
+          </div>
+          {/* End sub featured posts */}
+          <Grid container spacing={5} className={classes.mainGrid}>
+            {/* Main content */}
+            {/* End main content */}
+            {/* Sidebar */}
+            {/* End sidebar */}
+          </Grid>
+          <SimpleCollapse />
+        </main>
+        <h3 className="work-on-text">I WORK ON</h3>
+        <main>
+          <div id="carousel">
+            <div className="hideLeft">
+              <img src={nodejslogoImg} />
+            </div>
+            <div className="prevLeftSecond">
+              <img src={codeigImg} />
+            </div>
+            <div className="prev">
+              <img src={angularImg} />
+            </div>
+            <div className="selected">
+              <img src={reactImg} />
+            </div>
+            <div className="next">
+              <img src={uxImg} />
+            </div>
+            <div className="nextRightSecond">
+              <img src={mongoImg} />
+            </div>
+            <div className="hideRight">
+              <img src={ionicImg} />
+            </div>
+          </div>
+          <div className="buttons">
+            <button id="prev" className="carosuel-btn"> &lt; </button>
+            <button id="next" className="carosuel-btn"> &gt; </button>
+          </div>
+        </main>
+      </Container>
       {
         !loader
-        ? <Container maxWidth="lg">
-            <Toolbar className={classes.toolbar}>
-              <Button size="small">Portfolio</Button>
-              <Typography
-                component="h2"
-                variant="h5"
-                color="inherit"
-                align="center"
-                noWrap
-                className={classes.toolbarTitle}
-              >
-                Hemaal Taras Hansda
-              </Typography>
-              <Button variant="outlined" size="small">
-                DOWNLOAD RESUME
-              </Button>
-            </Toolbar>
-            <main>
-              {/* Main featured post */}
-              <Paper className={classes.mainFeaturedPost}>
-                {/* Increase the priority of the hero background image */}
-                {
-                  <img
-                    style={{ display: 'none' }}
-                    src="https://source.unsplash.com/user/erondu"
-                    alt="background"
-                  />
-                }
-                <div className={classes.overlay} />
-                <Grid container>
-                  <Grid item md={12}>
-                    <div className={classes.mainFeaturedPostContent + ' main-intro'}>
-                      <Typography className="heading-one" component="h1" variant="h3" color="inherit" gutterBottom>
-                        Full Stack Developer
-                      </Typography>
-                      <Typography className="subtitles" variant="h7" color="inherit" paragraph style={{fontWeight: 'bolder', textAlign: 'center'}}>
-                      An experienced and trained Programmer and Full Stack Developer pursuing 
-                      Bachelor of Technology in Information Technology from Maulana Abul Kalam Azad 
-                      University of Technology. A growing engineer who has the technical knowledge of 
-                      how things work in the world of zeroes and ones, ready with an edge to dive into the 
-                      design process to discover, ideate and build some cool product. 
-                      </Typography>
-                    </div>
-                  </Grid>
-                </Grid>
-              </Paper>
-              {/* End main featured post */}
-              <h3 className="project-text">PROJECTS</h3>
-              {/* Sub featured posts */}
-              <div style={{overflowX: 'auto', scrollBehavior: 'smooth'}} id="corsoSlider">
-                <div style={{display: 'flex', flexWrap: 'nowrap', width: sliderWidth}}>
-                  {featuredPosts.map(post => (
-                    <div key={post.title} style={{marginRight: '15px'}}>
-                      <CardActionArea component="a" onClick={expandDetails} className="card-hover">
-                        <Card className={classes.card}>
-                          <div className={classes.cardDetails}>
-                            <CardContent>
-                              <Typography component="h2" variant="h5">
-                                {post.title}
-                              </Typography>
-                              <Typography variant="subtitle1" color="textSecondary">
-                                {new Date(post.createdAt).toDateString()}
-                              </Typography>
-                              <Typography variant="subtitle1" paragraph>
-                                {post.description}
-                              </Typography>
-                            </CardContent>
-                          </div>
-                          <Hidden xsDown>
-                            <CardMedia
-                              className={classes.cardMedia + ' filter-adder'}
-                              image={post.imageUrl}
-                              title="Image title"
-                            />
-                          </Hidden>
-                        </Card>
-                      </CardActionArea>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="buttons-slider">
-                <button className="carosuel-btn-slider" onClick={() => props.slideProjects('left')}>
-                  <img className="arrow" src={leftArrow} alt="Slide Left" />
-                </button>
-                <button className="carosuel-btn-slider" onClick={() => props.slideProjects('right')}>
-                  <img className="arrow" src={rightArrow} alt="Slide Right" />
-                </button>
-              </div>
-              {/* End sub featured posts */}
-              <Grid container spacing={5} className={classes.mainGrid}>
-                {/* Main content */}
-                {/* End main content */}
-                {/* Sidebar */}
-                {/* End sidebar */}
-              </Grid>
-              <SimpleCollapse />
-            </main>
-            <h3 className="work-on-text">I WORK ON</h3>
-            <main>
-              <div id="carousel">
-                <div className="hideLeft">
-                  <img src={nodejslogoImg} />
-                </div>
-                <div className="prevLeftSecond">
-                  <img src={codeigImg} />
-                </div>
-                <div className="prev">
-                  <img src={angularImg} />
-                </div>
-                <div className="selected">
-                  <img src={reactImg} />
-                </div>
-                <div className="next">
-                  <img src={uxImg} />
-                </div>
-                <div className="nextRightSecond">
-                  <img src={mongoImg} />
-                </div>
-                <div className="hideRight">
-                  <img src={ionicImg} />
-                </div>
-              </div>
-              <div className="buttons">
-                <button id="prev" className="carosuel-btn"> &lt; </button>
-                <button id="next" className="carosuel-btn"> &gt; </button>
-              </div>
-            </main>
-          </Container>
+        ? ''
         : <div style={{
             zIndex: 999,
             backgroundColor: 'black',
